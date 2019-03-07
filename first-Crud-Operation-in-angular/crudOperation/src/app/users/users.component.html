@@ -1,0 +1,21 @@
+<button class="btn btn-primary" (click)="logout()" >Logout</button>
+
+<a routerLink="/insert"><button class="btn btn-primary">Add</button></a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Password</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of users" >
+      <td>{{item.name}}</td>
+      <td>{{item.password}}</td>
+      <td>{{item.email}}</td>
+
+      <td><a  routerLink="/edit/{{item._id}}"><button class="btn btn-primary">Edit</button></a></td>
+     <td><button class="btn btn-danger" (click)="removedata(item._id)"    >Delete</button></td>
+
+  </tbody>

@@ -1,0 +1,11 @@
+1)first start mongodb service 
+
+sudo service mongod start
+
+2) and run api using node
+	node user-app.js
+
+3) and run angular crud demo folder and run
+	npm serve
+
+
