@@ -20,21 +20,21 @@ export class IssueService {
 
   addIssue(title, responsible, description, severity) {
     const issue = {
-      title: title,
-      responsible: responsible,
-      description: description,
-      severity: severity
+     title,
+     responsible,
+     description,
+     severity
     };
     return this.http.post(`http://localhost:3000/issues/add`, issue);
   }
 
   updateIssue(id, title, responsible, description, severity, status) {
     const issue = {
-      title: title,
-      responsible: responsible,
-      description: description,
-      severity: severity,
-      status: status
+      title,
+      responsible,
+      description,
+      severity,
+      status
     };
     return this.http.post(`http://localhost:3000/issues/update/${id}`, issue);
   }
