@@ -12,6 +12,9 @@ let Issue = new Schema ({
     description: {
         type: String
     },
+    severity: {
+        type: String
+    },
     status: {
         type: String,
         default: 'Open'
