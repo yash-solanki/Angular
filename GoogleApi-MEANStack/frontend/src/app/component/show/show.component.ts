@@ -10,7 +10,7 @@ import { Issue } from '../../issue.model';
 export class ShowComponent implements OnInit {
 
   issues: Issue[];
-  displayedColumn = ['name', 'phone'];
+  columnsToDisplay = ['personName', 'contectNo'];
 
   constructor(private issueService: IssueService, private router: Router) { }
 
