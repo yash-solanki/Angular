@@ -1,0 +1,37 @@
+<!-- <div>
+  <br>
+  <mat-card>
+    <table mat-table [dataSource]="issues">
+      <ng-container matColumnDef="personName">
+        <th mat-header-cell class="thead" *matHeaderCellDef>personName</th>
+        <td mat-cell *matCellDef="let element">{{element.personName}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="contectNo">
+        <th mat-header-cell class="thead" *matHeaderCellDef>contectNo</th>
+        <td mat-cell *matCellDef="let element">{{element.contectNo}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumn"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumn;"></tr>
+
+    </table>
+  </mat-card>
+</div>
+ -->
+<div>
+  <table>
+    <thead>
+    <tr>
+      <th>Person Name</th>
+      <th>Mobile No</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of issues">
+      <td>{{data.personName}}</td>
+      <td>{{data.contectNo}}</td>
+    </tr>
+  </tbody>
+  </table>
+</div>

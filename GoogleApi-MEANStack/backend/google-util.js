@@ -3,7 +3,13 @@ const express = require('express');
 const url = require('url');
 const ls= require('local-storage');
 const app = express();
+const cors = require('cors');
 let configAuth = require('./oath.json');
+const corsOption = {
+    origin:['http://localhost:4200']
+}
+
+app.use(cors(corsOption));
 
 const googleConfig = {
     clientId: configAuth.web.client_id,
@@ -77,20 +83,17 @@ app.get('/contact',function(red,response){
            else
            {
             let userData = res.data.connections;
-            console.log(userData);
-             response.send(JSON.stringify(res.data.connections));
              let userDetail=[];
-             if(userData){
-             
-         	userData.forEach(people=>{
+             if(userData) {
+         	    userData.forEach(people=>{
                     console.log(people.names[0].displayName);
-             userDetail.push({
-                 personName:people.names[0].displayName,
-                contectNo: people.phoneNumbers[0].value
+                userDetail.push({
+                    personName:people.names[0].displayName,
+                    contectNo: people.phoneNumbers[0].value
                 })  
             });
            }
-           console.log(userDetail);
+           response.send(userDetail);
         }
     });
   });
