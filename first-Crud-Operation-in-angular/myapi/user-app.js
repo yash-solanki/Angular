@@ -36,10 +36,7 @@ app.use("/user", blogconroller);
 
 app.post("/login", function(req, res) {
   
-  Users.findOne({ name: req.body.name, password: req.body.password }, function(
-    err,
-    data
-  ) {
+  Users.findOne({ name: req.body.name, password: req.body.password }, function(err,data) {
     if (err) {
       res.status(500);
       res.end();
@@ -65,4 +62,6 @@ app.get("/logout", function(req, res) {
 });
 
 module.exports = app;
-app.listen(8005);
+app.listen(8005,()=>{
+  console.log('live on port 8005');
+});
