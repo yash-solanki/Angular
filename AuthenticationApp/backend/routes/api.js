@@ -73,25 +73,37 @@ router.get('/events', (req,res) => {
             "_id":"1",
             "name":"Abc",
             "description": "ecdsdfewv",
-            "dete": "10/10/10"
+            "date": "2010-10-25"
         },
         {
             "_id":"2",
             "name":"Abc",
             "description": "ecdsdfewv",
-            "dete": "10/10/10"
+            "date": "2010-10-25"
         },
         {
             "_id":"3",
             "name":"Abc",
             "description": "ecdsdfewv",
-            "dete": "10/10/10"
+            "date": "2010-10-25"
         },
         {
             "_id":"4",
             "name":"Abc",
             "description": "ecdsdfewv",
-            "dete": "10/10/10"
+            "date": "2010-10-25"
+        },
+        {
+            "_id":"5",
+            "name":"Abc",
+            "description": "ecdsdfewv",
+            "date": "2010-10-25"
+        },
+        {
+            "_id":"6",
+            "name":"Abc",
+            "description": "ecdsdfewv",
+            "date": "2010-10-25"
         }
     ]
 
@@ -104,25 +116,37 @@ router.get('/special', verifyToken, (req,res) => {
             "_id":"1",
             "name":"Abc",
             "description": "ecdsdfewv",
-            "dete": "10/10/10"
+            "date": "2010-10-25"
         },
         {
             "_id":"2",
             "name":"Abc",
             "description": "ecdsdfewv",
-            "dete": "10/10/10"
+            "date": "2010-10-25"
         },
         {
             "_id":"3",
             "name":"Abc",
             "description": "ecdsdfewv",
-            "dete": "10/10/10"
+            "date": "2010-10-25"
         },
         {
             "_id":"4",
             "name":"Abc",
             "description": "ecdsdfewv",
-            "dete": "10/10/10"
+            "date": "2010-10-25"
+        },
+        {
+            "_id":"5",
+            "name":"Abc",
+            "description": "ecdsdfewv",
+            "date": "2010-10-25"
+        },
+        {
+            "_id":"6",
+            "name":"Abc",
+            "description": "ecdsdfewv",
+            "date": "2010-10-25"
         }
     ]
 
