@@ -5,6 +5,7 @@ const cors = require('cors');
 const bodyparser = require('body-parser');
 const app= express();
 
+
 mongoose.connect("mongodb://localhost:27017/People", { useNewUrlParser: true });
 
 let People = mongoose.model("People", {
