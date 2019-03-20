@@ -4,7 +4,8 @@ let User = require('../models/user');
 let Issue = require('../models/issue');
 const jwt = require('jsonwebtoken');
 
- exports.verify = function verifyToken( req, res, next ) {
+
+exports.verify = function verifyToken( req, res, next ) {
     if (!req.headers.authorization) {
         return res.status(401).send('Unauthorized request');
     }
@@ -20,6 +21,7 @@ const jwt = require('jsonwebtoken');
     next();
 }
 
+
 exports.getAllIssues = function(req,res) {
     console.log('one');
     Issue.find((err,issues) => {
@@ -33,8 +35,7 @@ exports.getAllIssues = function(req,res) {
 
 
 exports.getIssueById = function(req,res) {
-    
-    console.log('rwo');
+    console.log('two');
     Issue.findById(req.params.id, (err, issue) => {
         if (err)
             console.log(err);
@@ -45,7 +46,6 @@ exports.getIssueById = function(req,res) {
 
 
 exports.addIssue = function(req,res) {
-    
     console.log('three');
     let issue = new Issue(req.body);
     issue.save()
@@ -59,7 +59,6 @@ exports.addIssue = function(req,res) {
 
 
 exports.updateIssueById = function(req,res) {
-    
     console.log('four');
     Issue.findById(req.params.id, (err,issue) => {
         if (!issue) {
@@ -96,9 +95,12 @@ exports.deleteIssueById = function(req,res) {
 }
 
 exports.RegisterUser = function (req,res) {
+    let user = new User();
     let userData = req.body;
-    let user = new User(userData);
-    user.save((error,registerdUser) => {
+        userData.password = user.generateHash(userData.password);
+    let newUser = new User(userData);
+    console.log(newUser);
+    newUser.save((error,registerdUser) => {
         if(error) {
             console.log(error);
         } else {
@@ -120,7 +122,7 @@ exports.LoginUser = function(req,res) {
             if (!user) {
                 res.status(401).send('Invalid email');
             } else {
-                if (user.password !== userData.password) {
+                if (!user.validPassword(userData.password)) { 
                     res.status(401).send('Invalid Password');
                 } else {
                     let payload = { subject: user._id }
