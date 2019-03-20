@@ -4,7 +4,7 @@ let User = require('../models/user');
 let Issue = require('../models/issue');
 const jwt = require('jsonwebtoken');
 
- function verifyToken( req, res, next ) {
+ exports.verify = function verifyToken( req, res, next ) {
     if (!req.headers.authorization) {
         return res.status(401).send('Unauthorized request');
     }
@@ -21,7 +21,6 @@ const jwt = require('jsonwebtoken');
 }
 
 exports.getAllIssues = function(req,res) {
-    
     console.log('one');
     Issue.find((err,issues) => {
         if (err) {

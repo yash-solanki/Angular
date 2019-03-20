@@ -21,7 +21,7 @@ export class IssueService {
      description,
      severity
     };
-    return this.http.post(`http://localhost:4040/issues/add`, issue);
+    return this.http.post(`http://localhost:4040/issues`, issue);
   }
 
   updateIssue(id, title, responsible, description, severity, status) {
@@ -32,11 +32,11 @@ export class IssueService {
       severity,
       status
     };
-    return this.http.put(`http://localhost:4040/issues/update/${id}`, issue);
+    return this.http.put(`http://localhost:4040/issues/${id}`, issue);
   }
 
   deleteIssue(id) {
-    return this.http.delete(`http://localhost:4040/issues/delete/${id}`);
+    return this.http.delete(`http://localhost:4040/issues/${id}`);
   }
 
 }

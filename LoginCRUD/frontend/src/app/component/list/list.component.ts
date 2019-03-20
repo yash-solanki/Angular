@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Issue } from '../../issue.model';
 import { IssueService } from '../../issue.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-list',
@@ -15,7 +16,7 @@ export class ListComponent implements OnInit {
   issues: Issue[];
   displayedColumn = ['title', 'responsible', 'severity', 'status', 'actions'];
 
-  constructor(private issueService: IssueService, private router: Router) { }
+  constructor(private issueService: IssueService, private router: Router, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.fetchIssues();
@@ -36,9 +37,10 @@ export class ListComponent implements OnInit {
   }
 
   deleteIssue(id) {
+    if ( confirm('Are U Sure??') ) {
     this.issueService.deleteIssue(id).subscribe(() => {
       this.fetchIssues();
     });
+    }
   }
-
 }

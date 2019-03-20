@@ -10,4 +10,4 @@ const userSchema = new Schema({
 });
 
 
-module.exports = mongoose.model( 'Ausers', userSchema);
+module.exports = mongoose.model('user', userSchema,  'Ausers');
