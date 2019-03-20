@@ -10,6 +10,8 @@ export class AuthService {
 
   private loginUrl = 'http://localhost:4040/issues/login';
 
+  // private logoutUrl = 'http://localhost:4040/issues/logout';
+
   constructor( private http: HttpClient, private router: Router) { }
 
   registerUser(user) {
@@ -25,6 +27,7 @@ export class AuthService {
   }
 
   logoutUser() {
+    // return this.http.post(this.logoutUrl, 'token');
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }

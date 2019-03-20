@@ -6,7 +6,6 @@ const cors = require('cors');
 const app = express();
 const jwt = require('jsonwebtoken');
 const abc = require('./routes/api');
-const crypto = require('crypto');
 
 app.use(cors());
 

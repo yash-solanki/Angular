@@ -132,4 +132,9 @@ exports.LoginUser = function(req,res) {
             }
         }
     });
-}
+};
+
+exports.LogoutUser = function(req,res) {
+    console.log("Logout");
+    res.send(localStorage.removeItem('token'));
+};

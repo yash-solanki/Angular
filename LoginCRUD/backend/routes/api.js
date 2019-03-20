@@ -36,5 +36,7 @@ router.post('/register', controller.RegisterUser);
 
 router.post('/login', controller.LoginUser);
 
+router.post('/logout', controller.LogoutUser );
+
 
 module.exports = router;
