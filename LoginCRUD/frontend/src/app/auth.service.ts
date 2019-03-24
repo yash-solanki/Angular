@@ -10,7 +10,9 @@ export class AuthService {
 
   private loginUrl = 'http://localhost:4040/issues/login';
 
-  // private logoutUrl = 'http://localhost:4040/issues/logout';
+  private logoutUrl = 'http://localhost:4040/issues/logout';
+
+  private tokenUrl = 'http://localhost:4040/issues/token';
 
   constructor( private http: HttpClient, private router: Router) { }
 
@@ -23,17 +25,22 @@ export class AuthService {
   }
 
   loggedIn() {
-    return !!localStorage.getItem('token');
+    // return !!localStorage.getItem('token');
+    return !!(this.http.get<any>(this.tokenUrl));
   }
 
   logoutUser() {
     // return this.http.post(this.logoutUrl, 'token');
-    localStorage.removeItem('token');
+    // localStorage.removeItem('token');
+
+    return this.http.get<any>(this.logoutUrl);
+
     this.router.navigate(['/login']);
   }
 
   getToken() {
-    return localStorage.getItem('token');
+    // return localStorage.getItem('token');
+    return this.http.get<any>(this.tokenUrl);
   }
 
 }
