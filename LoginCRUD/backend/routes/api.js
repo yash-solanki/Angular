@@ -21,6 +21,14 @@ mongoose.connect('mongodb://127.0.0.1/issues',{ useNewUrlParser: true }, err => 
     }
 });
 
+mongoose.connect('mongodb://127.0.0.1/Token',{ useNewUrlParser: true }, err => {
+    if (err) {
+        console.error(err);
+    } else {
+        console.log('Connected to Database Token');
+    }
+});
+
 router.get('/', controller.verify, controller.getAllIssues);
 
 router.get('/:id', controller.verify ,controller.getIssueById);
@@ -36,7 +44,8 @@ router.post('/register', controller.RegisterUser);
 
 router.post('/login', controller.LoginUser);
 
-router.post('/logout', controller.LogoutUser );
+router.get('/logout', controller.LogoutUser);
 
+router.get('/token', controller.GetToken);
 
 module.exports = router;
