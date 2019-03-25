@@ -5,9 +5,14 @@ const api = require('./routes/api');
 const cors = require('cors');
 const app = express();
 const jwt = require('jsonwebtoken');
+const  cookieParser = require('cookie-parser');
 const abc = require('./routes/api');
+var LocalStorage = require('node-localstorage').LocalStorage;
+  localStorage = new LocalStorage('./scratch');
 
 app.use(cors());
+
+app.use(cookieParser());
 
 app.use(bodyparser.json());
 

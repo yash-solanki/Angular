@@ -2,15 +2,17 @@
 
 let User = require('../models/user');
 let Issue = require('../models/issue');
-let Token = require('../models/token');
 const jwt = require('jsonwebtoken');
-
+var LocalStorage = require('node-localstorage').LocalStorage;
+let localStorage = new LocalStorage('./scratch');
 
 exports.verify = function verifyToken( req, res, next ) {
     if (!req.headers.authorization) {
         return res.status(401).send('Unauthorized request');
     }
-    let token = req.headers.authorization.split(' ')[1];
+    // let token = req.headers.authorization.split(' ')[1];
+    let token = localStorage.getItem('token');
+    console.log(token);
     if( token === 'null' ) {
         return res.status(401).send('Unauthorized request');
     }
@@ -37,6 +39,7 @@ exports.getAllIssues = function(req,res) {
 
 exports.getIssueById = function(req,res) {
     console.log('two');
+    console.log(req.params.id);
     Issue.findById(req.params.id, (err, issue) => {
         if (err)
             console.log(err);
@@ -106,17 +109,8 @@ exports.RegisterUser = function (req,res) {
             console.log(error);
         } else {
             let payload = { subject: registerdUser._id }
-            let token = jwt.sign(payload, 'secretkey');
-            
-            let tok = new Token(token);
-            tok.save()
-                .then(issue => {
-                    res.status(200).json({'issue':'Added Successfully'});
-                })
-                .catch(err => {
-                    res.status(400).send('Failed to create new record');
-                });
-
+            var token = jwt.sign( payload, 'secretkey');
+            console.log(token);
             res.status(200).send({token});
         }
     });
@@ -136,17 +130,13 @@ exports.LoginUser = function(req,res) {
                 if (!user.validPassword(userData.password)) { 
                     res.status(401).send('Invalid Password');
                 } else {
+                    console.log(user);
                     let payload = { subject: user._id }
                     let token = jwt.sign(payload, 'secretkey');
 
-                    let tok = new Token(token);
-                    tok.save()
-                        .then(issue => {
-                            res.status(200).json({'issue':'Added Successfully'});
-                        })
-                        .catch(err => {
-                            res.status(400).send('Failed to create new record');
-                        });
+                    localStorage.setItem('token', token);
+
+                    console.log(localStorage.getItem('token'));
 
                     res.status(200).send({token});
                 }
@@ -155,24 +145,14 @@ exports.LoginUser = function(req,res) {
     });
 };
 
-exports.LogoutUser = function(req,res) {
-    console.log("Logout");
-    Token.remove({}, (err,issue) => {
-        if (err) {
-            res.json(err);
-        } else {
-            res.json('Remove Successfully').send('Token Removed');
-        }
-    });
+exports.GetToken = function(req,res) {
+    console.log(localStorage.getItem('token'));
+    res.send(JSON.stringify(localStorage.getItem('token')));
 };
 
-exports.GetToken = function(req,res) {
-    console.log('Token find');
-    Token.find((err,tokens) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.json(issues);
-        }
-    });
-}
+exports.LogoutUser = function(req,res) {
+    console.log("KBKJBKJB");
+    localStorage.removeItem('token');
+    console.log(localStorage.getItem('token'));
+    res.send(JSON.stringify("logout"));
+};

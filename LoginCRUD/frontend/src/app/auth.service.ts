@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { getToken } from '@angular/router/src/utils/preactivation';
 @Injectable({
   providedIn: 'root'
 })
@@ -26,20 +27,22 @@ export class AuthService {
 
   loggedIn() {
     // return !!localStorage.getItem('token');
-    return !!(this.http.get<any>(this.tokenUrl));
+    // return !!(this.http.get<any>(this.tokenUrl));
+    return this.http.get<any>(this.tokenUrl);
+
   }
 
   logoutUser() {
-    // return this.http.post(this.logoutUrl, 'token');
-    // localStorage.removeItem('token');
-
-    return this.http.get<any>(this.logoutUrl);
-
-    this.router.navigate(['/login']);
+    console.log('Logout');
+    return this.http.post(this.logoutUrl, { ab : 'token'} )
+    .subscribe(
+     res => {
+      console.log('sacb');
+      this.router.navigate(['/login']);
+     });
   }
 
   getToken() {
-    // return localStorage.getItem('token');
     return this.http.get<any>(this.tokenUrl);
   }
 
