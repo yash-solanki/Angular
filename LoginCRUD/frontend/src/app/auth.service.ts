@@ -7,6 +7,8 @@ import { getToken } from '@angular/router/src/utils/preactivation';
 })
 export class AuthService {
 
+  token ;
+
   private registerUrl = 'http://localhost:4040/issues/register';
 
   private loginUrl = 'http://localhost:4040/issues/login';
@@ -15,7 +17,9 @@ export class AuthService {
 
   private tokenUrl = 'http://localhost:4040/issues/token';
 
-  constructor( private http: HttpClient, private router: Router) { }
+  constructor( private http: HttpClient, private router: Router) {
+    this.getToken();
+   }
 
   registerUser(user) {
     return this.http.post<any>(this.registerUrl, user);
@@ -26,10 +30,8 @@ export class AuthService {
   }
 
   loggedIn() {
-    // return !!localStorage.getItem('token');
-    // return !!(this.http.get<any>(this.tokenUrl));
-    return this.http.get<any>(this.tokenUrl);
-
+    //  return !!localStorage.getItem('token');
+   return !!this.http.get<any>(this.tokenUrl);
   }
 
   logoutUser() {
@@ -44,6 +46,10 @@ export class AuthService {
 
   getToken() {
     return this.http.get<any>(this.tokenUrl);
+      // .subscribe( data => {
+      //   this.token = data;
+      //   console.log(data);
+      // });
   }
 
 }

@@ -146,8 +146,14 @@ exports.LoginUser = function(req,res) {
 };
 
 exports.GetToken = function(req,res) {
-    console.log(localStorage.getItem('token'));
-    res.send(JSON.stringify(localStorage.getItem('token')));
+    console.log(JSON.stringify(localStorage.getItem('token')));
+    if ( localStorage.getItem('token') ) {
+        res.send(true);
+    } else {
+        //res.send();
+    }
+    // res.json(localStorage.getItem('token'));
+    // res.send(JSON.stringify(localStorage.getItem('token')));
 };
 
 exports.LogoutUser = function(req,res) {

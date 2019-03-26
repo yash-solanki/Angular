@@ -6,6 +6,9 @@ import { Issue } from '../../issue.model';
 import { IssueService } from '../../issue.service';
 import { MatSnackBar } from '@angular/material';
 
+import { AuthService } from '../../auth.service';
+
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -16,7 +19,8 @@ export class ListComponent implements OnInit {
   issues: Issue[];
   displayedColumn = ['title', 'responsible', 'severity', 'status', 'actions'];
 
-  constructor(private issueService: IssueService, private router: Router, private snackBar: MatSnackBar) { }
+  constructor(private issueService: IssueService, private router: Router, private snackBar: MatSnackBar,
+              private authService: AuthService ) { }
 
   ngOnInit() {
     this.fetchIssues();
