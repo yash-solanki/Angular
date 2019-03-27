@@ -32,6 +32,11 @@ export class AuthService {
   loggedIn() {
     //  return !!localStorage.getItem('token');
    return !!this.http.get<any>(this.tokenUrl);
+  //  return getToken()
+  //     .subscribe( data => {
+  //     this.token = data;
+  //     console.log(data);
+  //   });
   }
 
   logoutUser() {
@@ -45,7 +50,7 @@ export class AuthService {
   }
 
   getToken() {
-    return this.http.get<any>(this.tokenUrl);
+    return this.http.get<any>(this.tokenUrl)
       // .subscribe( data => {
       //   this.token = data;
       //   console.log(data);
