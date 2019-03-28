@@ -7,7 +7,7 @@ import { getToken } from '@angular/router/src/utils/preactivation';
 })
 export class AuthService {
 
-  token ;
+  // token = false;
 
   private registerUrl = 'http://localhost:4040/issues/register';
 
@@ -18,7 +18,7 @@ export class AuthService {
   private tokenUrl = 'http://localhost:4040/issues/token';
 
   constructor( private http: HttpClient, private router: Router) {
-    this.getToken();
+    // this.tokenFatch();
    }
 
   registerUser(user) {
@@ -29,14 +29,32 @@ export class AuthService {
     return this.http.post<any>(this.loginUrl, user);
   }
 
+  // tokenFatch() {
+  //     this.getToken()
+  //   // return this.http.get<any>(this.tokenUrl)
+  //       .subscribe( data => {
+  //         if ( data ) {
+  //           this.token = true;
+  //         } else {
+  //           this.token = false;
+  //         }
+  //       });
+  // }
+
   loggedIn() {
+    // this.tokenFatch();
+    // if ( this.token === true ) {
+    //   return true;
+    // } else {
+    //   return false;
+    // }
+
     //  return !!localStorage.getItem('token');
    return !!this.http.get<any>(this.tokenUrl);
-  //  return getToken()
-  //     .subscribe( data => {
-  //     this.token = data;
-  //     console.log(data);
-  //   });
+    //   .subscribe( data => {
+    //   this.token = data;
+    //   console.log(data);
+    // });
   }
 
   logoutUser() {
@@ -50,7 +68,7 @@ export class AuthService {
   }
 
   getToken() {
-    return this.http.get<any>(this.tokenUrl)
+    return this.http.get<any>(this.tokenUrl);
       // .subscribe( data => {
       //   this.token = data;
       //   console.log(data);
