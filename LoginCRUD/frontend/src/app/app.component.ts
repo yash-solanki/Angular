@@ -5,8 +5,31 @@ import { AuthService } from './auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent{
   title = 'frontend';
+  token = false ;
 
-  constructor( public authService: AuthService ) {}
+  // ngOnInit() {
+  //   this.dataFatch();
+  // }
+
+  constructor( public authService: AuthService ) {
+    this.dataFatch();
+  }
+
+  dataFatch() {
+    this.authService
+      .getToken()
+        .subscribe( data => {
+          if ( data ) {
+            this.token = true;
+            return true;
+          } else {
+            this.token = false;
+            return false;
+          }
+        });
+  }
+
+
 }
