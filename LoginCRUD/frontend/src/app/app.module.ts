@@ -54,7 +54,7 @@ import { IssueService } from './issue.service';
     MatTableModule,
     MatDividerModule,
     MatSnackBarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [ AuthService, IssueService, AuthGuard,
     {

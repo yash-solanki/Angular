@@ -1,23 +1,23 @@
 import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
+// import { AutoLogoutService } from './component/auto-logout';
+import { AutoLogoutService } from './component/auto-logout.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent{
+export class AppComponent {
   title = 'frontend';
   token = false ;
 
-  // ngOnInit() {
-  //   this.dataFatch();
-  // }
-
-  constructor( public authService: AuthService ) {
-    this.dataFatch();
+  constructor( public authService: AuthService, private autoLogout: AutoLogoutService ) {
+    this.tokenFatch();
   }
 
-  dataFatch() {
+
+  tokenFatch() {
     this.authService
       .getToken()
         .subscribe( data => {
