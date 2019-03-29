@@ -20,7 +20,7 @@ export class ListComponent implements OnInit {
   displayedColumn = ['title', 'responsible', 'severity', 'status', 'actions'];
 
   constructor(private issueService: IssueService, private router: Router, private snackBar: MatSnackBar,
-              private authService: AuthService ) { }
+              private authService: AuthService) { }
 
   ngOnInit() {
     this.fetchIssues();

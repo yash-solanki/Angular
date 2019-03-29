@@ -21,6 +21,13 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
+  googleSignup(){
+    window.location.href = 'http://localhost:4040/checkauth';
+  }
+
+  faceSignup() {
+    window.location.href = 'http://localhost:4040/auth/facebook';
+  }
 
   registerUser() {
     this.auth.registerUser(this.registerUserData)
