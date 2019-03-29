@@ -34,6 +34,7 @@ export class AutoLogoutService {
   initInterval() {
     setInterval(() => {
       if (this.authService.loggedIn()) {
+
       this.check();
       }
     }, CHECK_INTERVAL);
