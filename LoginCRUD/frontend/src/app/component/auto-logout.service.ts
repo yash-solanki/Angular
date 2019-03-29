@@ -25,10 +25,11 @@ export class AutoLogoutService {
 
   initListener() {
     document.body.addEventListener('click', () => this.reset());
+    document.body.addEventListener('mousemove', () => this.reset());
+    document.body.addEventListener('keypress', () => this.reset());
   }
 
   reset() {
-    console.log('iug');
     this.lastAction = Date.now();
   }
   initInterval() {
@@ -44,8 +45,8 @@ export class AutoLogoutService {
     const now = Date.now();
     const timeleft = this.lastAction + MINUTES_UNTIL_AUTO_LOGOUT * 60 * 1000;
     const diff = timeleft - now;
+    console.log(diff);
     const isTimeout = diff < 0;
-    console.log('hiiii');
     if (isTimeout && this.authService.loggedIn()) {
       console.log(this.authService.loggedIn());
       this.authService.logoutUser();
