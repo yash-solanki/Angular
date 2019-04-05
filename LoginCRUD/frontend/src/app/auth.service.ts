@@ -26,18 +26,18 @@ export class AuthService {
     return this.http.post<any>(this.loginUrl, user);
   }
 
+  loggedInGoogle() {
+    return !!localStorage.getItem('gtoken');
+  }
+
   loggedIn() {
      return !!localStorage.getItem('Login');
-  //  return !!this.http.get<any>(this.tokenUrl);
-    //   .subscribe( data => {
-    //   this.token = data;
-    //   console.log(data);
-    // });
   }
 
   logoutUser() {
     console.log('Logout');
     localStorage.removeItem('Login');
+    localStorage.removeItem('gtoken');
     return this.http.post(this.logoutUrl, { ab : 'token'} )
     .subscribe(
      res => {
@@ -48,10 +48,6 @@ export class AuthService {
 
   getToken() {
     return this.http.get<any>(this.tokenUrl);
-      // .subscribe( data => {
-      //   this.token = data;
-      //   console.log(data);
-      // });
   }
 
 }
