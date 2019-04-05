@@ -1,29 +1,46 @@
-'use strict';
-
 let User = require('../models/user');
 let Issue = require('../models/issue');
 const jwt = require('jsonwebtoken');
 var LocalStorage = require('node-localstorage').LocalStorage;
 let localStorage = new LocalStorage('./scratch');
+let url = require('url');
+// let GAUth = require('./googlectrl')
 
 exports.verify = function verifyToken( req, res, next ) {
     if (!req.headers.authorization) {
         return res.status(401).send('Unauthorized request');
     }
-    // let token = req.headers.authorization.split(' ')[1];
+    // // let token = req.headers.authorization.split(' ')[1];
+    // // let url_parts = url.parse(req.url, true);
+    // // let query = url_parts.query;
+    // // console.log(query);
     let token = localStorage.getItem('token');
     console.log(token);
-    if( token === 'null' ) {
-        return res.status(401).send('Unauthorized request');
+    let gtoken = req.body.token;
+    console.log(gtoken);
+    if( token ) {
+        console.log('Jwt Token');
+        if( token === 'null' && query == 'null' ) {
+            return res.status(401).send('Unauthorized request');
+        } 
+        let payload = jwt.verify(token, 'secretkey');
+            console.log(payload);
+        if (!payload) {
+            return res.status(401).send('Unauthorized request');
+        }
+        req.userId = payload.subject;
     }
-    let payload = jwt.verify(token, 'secretkey');
-    if (!payload) {
-        return res.status(401).send('Unauthorized request');
+    else if ( gtoken ) {
+        console.log('google token');
     }
-    req.userId = payload.subject;
     next();
 }
 
+exports.dealWithToken = (req, res) => {
+         console.log('from google');
+         console.log(req.body);
+         return true;
+    }
 
 exports.getAllIssues = function(req,res) {
     console.log('one');
@@ -116,7 +133,6 @@ exports.RegisterUser = function (req,res) {
     });
 };
 
-
 exports.LoginUser = function(req,res) {
     let userData = req.body;
     User.findOne({email: userData.email}, (error, user) => {
@@ -150,10 +166,8 @@ exports.GetToken = function(req,res) {
     if ( localStorage.getItem('token') ) {
         res.send(true);
     } else {
-        //res.send();
+        console.log('Not Get any token');
     }
-    // res.json(localStorage.getItem('token'));
-    // res.send(JSON.stringify(localStorage.getItem('token')));
 };
 
 exports.LogoutUser = function(req,res) {
