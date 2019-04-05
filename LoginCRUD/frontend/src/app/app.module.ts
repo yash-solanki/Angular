@@ -27,6 +27,7 @@ import { EditComponent } from './component/edit/edit.component';
 import { ListComponent } from './component/list/list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IssueService } from './issue.service';
+import { FetchTokenComponent } from './fetch-token/fetch-token.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { IssueService } from './issue.service';
     RegisterComponent,
     CreateComponent,
     EditComponent,
-    ListComponent
+    ListComponent,
+    FetchTokenComponent
   ],
   imports: [
     AppRoutingModule,
