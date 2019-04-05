@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { SocialauthService } from '../socialauth.service';
+
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControlName  } from '@angular/forms';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -12,7 +15,7 @@ export class RegisterComponent implements OnInit {
   registerUserData = {};
   createUser: FormGroup;
 
-  constructor( private auth: AuthService, private router: Router, private fb: FormBuilder ) {
+  constructor( private auth: AuthService, private router: Router, private fb: FormBuilder, private socialAuth: SocialauthService ) {
     this.createUser = this.fb.group({
       email: ['', Validators.required],
       password: ''
@@ -21,12 +24,22 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
-  googleSignup(){
-    window.location.href = 'http://localhost:4040/checkauth';
+  googleSignup() {
+    this.socialAuth.GoogleSignUp()
+      .subscribe(
+        res => {
+          console.log(res);
+          // localStorage.setItem('gtoken', res);
+          window.location.href = res.gurl;
+
+          this.router.navigate(['/login']);
+        }
+      );
+    // window.location.href = 'http://localhost:4040/issues/checkauth';
   }
 
   faceSignup() {
-    window.location.href = 'http://localhost:4040/auth/facebook';
+    window.location.href = 'http://localhost:4040/issues/faceauth';
   }
 
   registerUser() {
