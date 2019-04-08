@@ -14,7 +14,7 @@
       <br><br>
       <button type="submit" (click)="registerUser()" [disabled]="createUser.pristine || createUser.invalid" mat-raised-button color="primary" >Register</button>
     </form>
-    <button (click)="this.googleSignup()">Google</button>
-    <!-- <button (click)="this.faceSignup()">Facebook</button> -->
+    <button (click)="this.googleSignup()"  mat-raised-button color="accent">Google</button>
+    <a href='http://localhost:4040/issues/faceauth' mat-raised-button color="primary">Facebook</a>
   </mat-card>
 </div>
