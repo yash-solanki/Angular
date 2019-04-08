@@ -34,7 +34,7 @@ export class AutoLogoutService {
   }
   initInterval() {
     setInterval(() => {
-      if (this.authService.loggedIn() || this.authService.loggedInGoogle() ) {
+      if (this.authService.loggedIn() || this.authService.loggedInGoogle() || this.authService.loggedInFacebook() ) {
         this.check();
       }
     }, CHECK_INTERVAL);
@@ -48,7 +48,7 @@ export class AutoLogoutService {
     const diff = timeleft - now;
     console.log(diff);
     const isTimeout = diff < 0;
-    if (isTimeout && (this.authService.loggedIn() || this.authService.loggedInGoogle() )) {
+    if (isTimeout && (this.authService.loggedIn() || this.authService.loggedInGoogle() || this.authService.loggedInFacebook() )) {
       // console.log(this.authService.loggedIn());
       this.authService.logoutUser();
     }
