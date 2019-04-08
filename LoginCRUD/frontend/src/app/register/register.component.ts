@@ -38,10 +38,6 @@ export class RegisterComponent implements OnInit {
     // window.location.href = 'http://localhost:4040/issues/checkauth';
   }
 
-  faceSignup() {
-    window.location.href = 'http://localhost:4040/issues/faceauth';
-  }
-
   registerUser() {
     this.auth.registerUser(this.registerUserData)
       .subscribe(
