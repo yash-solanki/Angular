@@ -7,13 +7,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" *ngIf="authService.loggedIn() || authService.loggedInGoogle()" routerLink="/list" routerLinkActive="active">List</a>
+        <a class="nav-link" *ngIf="authService.loggedIn() || authService.loggedInGoogle() || authService.loggedInFacebook()" routerLink="/list" routerLinkActive="active">List</a>
       </li>
     </ul>
     <ul class="navbar-nav">
-        <a class="nav-link" *ngIf="!(authService.loggedIn() || authService.loggedInGoogle())" routerLink="/login" routerLinkActive="active">Login</a>
-        <a class="nav-link" *ngIf="!(authService.loggedIn() || authService.loggedInGoogle())" routerLink="/register" routerLinkActive="active">Register</a>
-        <a class="nav-link" style="cursor:pointer" *ngIf="authService.loggedIn() || authService.loggedInGoogle()" (click)="authService.logoutUser()">Logout</a>
+        <a class="nav-link" *ngIf="!(authService.loggedIn() || authService.loggedInGoogle() || authService.loggedInFacebook())" routerLink="/login" routerLinkActive="active">Login</a>
+        <a class="nav-link" *ngIf="!(authService.loggedIn() || authService.loggedInGoogle() || authService.loggedInFacebook())" routerLink="/register" routerLinkActive="active">Register</a>
+        <a class="nav-link" style="cursor:pointer" *ngIf="authService.loggedIn() || authService.loggedInGoogle() || authService.loggedInFacebook()" (click)="authService.logoutUser()">Logout</a>
     </ul>
   </div>
 </nav>
