@@ -34,10 +34,15 @@ export class AuthService {
      return !!localStorage.getItem('Login');
   }
 
+  loggedInFacebook() {
+    return !!localStorage.getItem('fbtoken');
+  }
+
   logoutUser() {
     console.log('Logout');
     localStorage.removeItem('Login');
     localStorage.removeItem('gtoken');
+    localStorage.removeItem('fbtoken');
     return this.http.post(this.logoutUrl, { ab : 'token'} )
     .subscribe(
      res => {
