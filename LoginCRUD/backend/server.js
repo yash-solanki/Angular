@@ -24,6 +24,10 @@ app.use(cookieParser());
 
 app.use(bodyparser.json());
 
+const xyz = require('./routes/facebookroute');
+
+app.use('/facebook',xyz);
+
 app.use('/issues',abc);
 
 app.get('/',(req,res) => {
