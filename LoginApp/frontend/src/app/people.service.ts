@@ -28,11 +28,11 @@ export class PeopleService {
       name,
       email
     };
-    return this.http.post(`http://localhost:3030/people/updateuser/${id}`,user);
+    return this.http.put(`http://localhost:3030/people/updateuser/${id}`,user);
   }
 
   deleteUser(id) {
-    return this.http.get(`http://localhost:3030/people/deleteuser`);
+    return this.http.delete(`http://localhost:3030/people/deleteuser`);
   }
 
 }
