@@ -34,11 +34,11 @@ export class IssueService {
       severity,
       status
     };
-    return this.http.post(`http://localhost:3000/issues/update/${id}`, issue);
+    return this.http.put(`http://localhost:3000/issues/update/${id}`, issue);
   }
 
   deleteIssue(id) {
-    return this.http.get(`http://localhost:3000/issues/delete/${id}`);
+    return this.http.delete(`http://localhost:3000/issues/delete/${id}`);
   }
 
 }
