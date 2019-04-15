@@ -27,16 +27,8 @@ mongoose.connect('mongodb://127.0.0.1/issues',{ useNewUrlParser: true }, err => 
 
 router.get('/checkauth', socialctrl.checkauth);
 
-router.post('/passToken', controller.verify, socialctrl.dealWithToken);
+router.post('/passToken', controller.verify, socialctrl.getGoogleToken);
 
-
-// Facebook Path
-
-// router.get('/faceauth', facectrl.faceauth);
-
-// router.get('/faceredirect', facectrl.faceredirect);
-
-// router.get('/loginfb', facectrl.loginfb);
 
 //Login
 router.post('/logout', controller.LogoutUser);

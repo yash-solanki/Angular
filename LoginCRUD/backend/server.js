@@ -11,7 +11,7 @@ const abc = require('./routes/api');
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
 
-var LocalStorage = require('node-localstorage').LocalStorage
+let LocalStorage = require('node-localstorage').LocalStorage
     localStorage = new LocalStorage('./scratch');
 
 

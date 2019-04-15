@@ -45,7 +45,7 @@ const gurl = oauth2Client.generateAuthUrl({
     scope: defaultScope
   });
 
-exports.dealWithToken = (req, res) => {
+exports.getGoogleToken = (req, res) => {
     console.log('from google');
     console.log(req.body.token);
     return true;

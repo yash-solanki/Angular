@@ -15,6 +15,8 @@ import { MatToolbarModule,
           MatDividerModule,
            MatSnackBarModule } from '@angular/material';
 
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 import { TokenInterceptorService } from './token-interceptor.service';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
@@ -57,6 +59,7 @@ import { FetchTokenComponent } from './fetch-token/fetch-token.component';
     MatDividerModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
+    DragDropModule
   ],
   providers: [ AuthService, IssueService, AuthGuard,
     {

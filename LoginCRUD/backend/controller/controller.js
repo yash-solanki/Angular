@@ -10,10 +10,7 @@ exports.verify = function verifyToken( req, res, next ) {
     if (!req.headers.authorization) {
         return res.status(401).send('Unauthorized request');
     }
-    // // let token = req.headers.authorization.split(' ')[1];
-    // // let url_parts = url.parse(req.url, true);
-    // // let query = url_parts.query;
-    // // console.log(query);
+    // let token = req.headers.authorization.split(' ')[1];
     let token = localStorage.getItem('token');
     console.log(token);
     let gtoken = req.body.token;
@@ -36,11 +33,11 @@ exports.verify = function verifyToken( req, res, next ) {
     next();
 }
 
-exports.dealWithToken = (req, res) => {
-         console.log('from google');
-         console.log(req.body);
-         return true;
-    }
+// exports.dealWithToken = (req, res) => {
+//          console.log('from google');
+//          console.log(req.body);
+//          return true;
+// }
 
 exports.getAllIssues = function(req,res) {
     console.log('one');
@@ -102,7 +99,6 @@ exports.updateIssueById = function(req,res) {
     });
 }
 
-
 exports.deleteIssueById = function(req,res) {
     
     console.log('five');
@@ -161,6 +157,7 @@ exports.LoginUser = function(req,res) {
     });
 };
 
+
 exports.GetToken = function(req,res) {
     console.log(JSON.stringify(localStorage.getItem('token')));
     if ( localStorage.getItem('token') ) {
@@ -169,6 +166,7 @@ exports.GetToken = function(req,res) {
         console.log('Not Get any token');
     }
 };
+
 
 exports.LogoutUser = function(req,res) {
     console.log("KBKJBKJB");
