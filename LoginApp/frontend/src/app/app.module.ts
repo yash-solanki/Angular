@@ -17,6 +17,8 @@ import { MatToolbarModule,
           MatDividerModule,
           MatSnackBarModule } from '@angular/material';
 
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 import { AppComponent } from './app.component';
 import { PeopleService } from './people.service';
 import { LoginComponent } from './login/login.component';
@@ -46,7 +48,8 @@ import { HomeComponent } from './home/home.component';
     MatCardModule,
     MatTableModule,
     MatDividerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    DragDropModule
   ],
   providers: [PeopleService],
   bootstrap: [AppComponent]
