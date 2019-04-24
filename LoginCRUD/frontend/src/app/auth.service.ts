@@ -27,15 +27,15 @@ export class AuthService {
   }
 
   loggedInGoogle() {
-    return !!localStorage.getItem('gtoken');
+    return localStorage.getItem('gtoken');
   }
 
   loggedIn() {
-     return !!localStorage.getItem('Login');
+     return localStorage.getItem('Login');
   }
 
   loggedInFacebook() {
-    return !!localStorage.getItem('fbtoken');
+    return localStorage.getItem('fbtoken');
   }
 
   logoutUser() {

@@ -5,7 +5,6 @@ const api = require('./routes/api');
 const cors = require('cors');
 const app = express();
 const jwt = require('jsonwebtoken');
-const  cookieParser = require('cookie-parser');
 const abc = require('./routes/api');
 
 const passport = require('passport');
@@ -19,8 +18,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(cors());
-
-app.use(cookieParser());
 
 app.use(bodyparser.json());
 
