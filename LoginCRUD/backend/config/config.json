@@ -1,0 +1,13 @@
+{
+    "development": {
+        "config_id":"development",
+        "node_port":"4040"
+    },
+    "testing": {
+        "config_id":"testing"
+    },
+    "production": {
+        "config_id":"production",
+        "node_port":"8080"
+    }
+}

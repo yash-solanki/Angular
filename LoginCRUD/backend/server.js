@@ -7,6 +7,8 @@ const app = express();
 const jwt = require('jsonwebtoken');
 const abc = require('./routes/api');
 
+const config = require('./config/config.json');
+
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
 
@@ -31,6 +33,6 @@ app.get('/',(req,res) => {
     res.send('hii');
 });
 
-app.listen(4040,()=> {
-    console.log("live on port: 4040");
+app.listen(config.development.node_port,()=> {
+    console.log(`live on ${config.development.config_id} mode, port: ${config.development.node_port}`);
 });
