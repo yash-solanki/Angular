@@ -10,5 +10,7 @@ export class TestService {
   add(a, b) {
     return a + b;
   }
-
+  mult( a, b ) {
+    return a * b;
+  }
 }

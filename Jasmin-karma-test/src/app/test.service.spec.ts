@@ -10,7 +10,7 @@ describe('TestService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should have add function', ()=> {
+  it('should have add function', () => {
     const service: TestService = TestBed.get(TestService);
     expect(service.add).toBeTruthy();
   });
@@ -18,6 +18,11 @@ describe('TestService', () => {
   it('should add correctly', () => {
     const service: TestService = TestBed.get(TestService);
     expect(service.add(1, 2)).toEqual(3);
+  });
+
+  it('should be multiply correctly...!!!', () => {
+    const service: TestService = TestBed.get(TestService);
+    expect( service.mult(10, 20)).toEqual(200);
   });
 
 });

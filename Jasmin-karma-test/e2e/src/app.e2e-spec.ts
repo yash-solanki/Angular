@@ -13,6 +13,8 @@ describe('workspace-project App', () => {
     expect(page.getTitleText()).toEqual('Welcome to Jasmin-karma-test!');
   });
 
+
+
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser
     const logs = await browser.manage().logs().get(logging.Type.BROWSER);
