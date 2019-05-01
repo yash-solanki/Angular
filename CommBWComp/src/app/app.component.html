@@ -1,0 +1,10 @@
+<div>
+  <h1>Parent</h1>
+  <p>Value in Child: {{this.childval}}</p>
+
+  <!-- <input type="text" #parentInput (keyup)="0"> -->
+  <div>
+    <app-child [myValue]="inputVar" (myOutput)='getData($event)'></app-child>
+  </div>
+</div>
+
