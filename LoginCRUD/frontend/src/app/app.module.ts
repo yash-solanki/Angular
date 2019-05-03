@@ -13,7 +13,9 @@ import { MatToolbarModule,
         MatCardModule,
          MatTableModule,
           MatDividerModule,
-           MatSnackBarModule } from '@angular/material';
+           MatSnackBarModule,
+           MatProgressSpinnerModule
+          } from '@angular/material';
 
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
@@ -58,6 +60,7 @@ import { FetchTokenComponent } from './fetch-token/fetch-token.component';
     MatTableModule,
     MatDividerModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
     BrowserAnimationsModule,
     DragDropModule
   ],
