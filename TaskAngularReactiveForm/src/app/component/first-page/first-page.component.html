@@ -26,15 +26,13 @@
     </form>
   </div>
 
-  <form [formGroup]="detail" id="generatedForm" (ngSubmit)="onFSubmit()">
-  <div class="container card" *ngFor="let record of records">
-    {{record.date}}<br>
-    <input matInput type="text" formControlName="value1" required placeholder="Enter Val1"><br>
-    <input matInput type="text" formControlName="value2" required placeholder="Enter Val2"><br>
-    <input matInput type="text" formControlName="value3" required placeholder="Enter Val3"><br>
-  </div><br>
-  <input type="text" *ngFor="let data of randomArray" placeholder="Enter val"><br>
-  <button mat-raised-button color="warn" type="submit">submit</button>
-</form>
-  <button mat-raised-button color="primary" (click)="finalOutput()" id="submitBtn">FinalSubmit</button>
+<div class="container card" id="generatedForm" *ngFor="let record of records">
+  {{record.date}}<br>
+    <label>Value1 : <input type="text" [(ngModel)]="record.value1" placeholder="Enter Value1"></label><br/>
+    <label>Value2 : <input type="text" [(ngModel)]="record.value2" placeholder="Enter Value2"></label><br/>
+    <label>Value3 : <input type="text" [(ngModel)]="record.value3" placeholder="Enter Value3"></label><br/>
+    <br/>
+</div>
+
+<button mat-raised-button color="primary" (click)="finalOutput()" id="submitBtn">FinalSubmit</button>
 <!-- {{randomArray | json}} -->
