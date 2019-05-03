@@ -17,6 +17,8 @@
     </ul>
   </div>
 </nav>
+
 <div class="container">
-  <router-outlet></router-outlet>
+    <mat-spinner *ngIf="this.loading"></mat-spinner>
+    <router-outlet></router-outlet>
 </div>
