@@ -17,7 +17,6 @@ export class FirstPageComponent implements OnInit {
   fromYears = [];
   toMonths = [];
   toYears = [];
-  val1 = '';
 
   constructor(private fb: FormBuilder) { }
 
@@ -40,13 +39,6 @@ export class FirstPageComponent implements OnInit {
     fromMonth: new FormControl(),
     toYear: new FormControl(),
     toMonth: new FormControl()
-  });
-
-// tslint:disable-next-line: member-ordering
-  detail = new FormGroup({
-    value1: new FormControl('', Validators.required),
-    value2: new FormControl('', Validators.required),
-    value3: new FormControl('', Validators.required),
   });
 
 
@@ -97,7 +89,6 @@ export class FirstPageComponent implements OnInit {
 
 // tslint:disable-next-line: member-ordering
   records = [];
-  randomArray = [];
 
   generateRecords() {
     let tempMonth = this.from.month;
@@ -105,8 +96,6 @@ export class FirstPageComponent implements OnInit {
     this.records = [];
 // tslint:disable-next-line: max-line-length
     const diff = moment(`${this.months.indexOf(this.to.month) + 1}/${parseInt(this.to.year)}`, 'M/YYYY').diff(moment(`${this.months.indexOf(this.from.month)+1}/${parseInt(this.from.year)}`, 'M/YYYY'), 'months', true);
-
-    console.log(diff);
 
     const numberOfMonths = diff + 1;
     for (let i = 0; i < numberOfMonths; i++) {
@@ -117,14 +106,6 @@ export class FirstPageComponent implements OnInit {
         value3: ''
       });
 
-      this.randomArray = [];
-      for ( let i = 0; i< numberOfMonths*3; i++ ) {
-        this.randomArray.push({
-          val: ''
-        });
-        console.log('ranArr', this.randomArray);
-      }
-
       tempMonth = this.months[this.months.indexOf(tempMonth) + 1];
       if (!tempMonth) {
         tempMonth = this.months[0];
@@ -132,14 +113,13 @@ export class FirstPageComponent implements OnInit {
       }
     }
   }
-  onFSubmit() {
-    console.log(this.detail.value);
-  }
+
+// tslint:disable-next-line: member-ordering
+  Months = [];
 
   finalOutput() {
-    console.log(this.records);
+    this.Months = this.records;
+    console.log(this.Months);
   }
-
-
 
 }
