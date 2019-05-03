@@ -95,7 +95,7 @@ export class FirstPageComponent implements OnInit {
     let tempYear = parseInt(this.from.year);
     this.records = [];
 // tslint:disable-next-line: max-line-length
-    const diff = moment(`${this.months.indexOf(this.to.month) + 1}/${parseInt(this.to.year)}`, 'M/YYYY').diff(moment(`${this.months.indexOf(this.from.month)+1}/${parseInt(this.from.year)}`, 'M/YYYY'), 'months', true);
+    const diff = moment(`${this.months.indexOf(this.to.month) + 1}/${parseInt(this.to.year)}`, 'M/YYYY').diff(moment(`${this.months.indexOf(this.from.month) + 1}/${parseInt(this.from.year)}`, 'M/YYYY'), 'months', true);
 
     const numberOfMonths = diff + 1;
     for (let i = 0; i < numberOfMonths; i++) {
