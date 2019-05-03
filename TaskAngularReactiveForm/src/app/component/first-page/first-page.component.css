@@ -1,10 +1,11 @@
 #selectDate {
   text-align: center;
+  margin-top: 50px;
 }
 #generatedForm {
   text-align: center;
 }
 #submitBtn {
+  margin-top: 20px;
   text-align: center;
-  margin-left: 500px;
 }
