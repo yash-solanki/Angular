@@ -18,6 +18,14 @@ export class FirstPageComponent implements OnInit {
   toMonths = [];
   toYears = [];
 
+  // New Code
+  public mainForm: FormGroup;
+  public subForm: FormArray;
+
+  get dataFormGroup() {
+    return this.mainForm.get('randomData') as FormArray;
+  }
+
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -26,6 +34,40 @@ export class FirstPageComponent implements OnInit {
     for (let i = 0; i < 10; i++) {
       this.fromYears.push(this.currentYear + i );
     }
+
+    // new Code
+
+    this.mainForm = this.fb.group({
+      fromYear: [null, Validators.compose([Validators.required])],
+      fromMonth: [null, Validators.compose([Validators.required])],
+      toYear: [null, Validators.compose([Validators.required])],
+      toMonth: [null, Validators.compose([Validators.required])],
+      randomData: this.fb.array([this.createRandomData()])
+    });
+
+    this.subForm = this.mainForm.get('randomData') as FormArray;
+  }
+
+  // new Code
+  createRandomData(): FormGroup {
+    return this.fb.group({
+      value1: [''],
+      value2: [''],
+      value3: ['']
+    });
+  }
+
+  getRandomDataFromGroup(index): FormGroup {
+    // this.subForm = this.form.get('randomData') as FormArray;
+    const formGroup = this.subForm.controls[index] as FormGroup;
+    return formGroup;
+  }
+
+  FOP = [];
+
+  submit() {
+    this.FOP = this.mainForm.value;
+    console.log(this.FOP);
   }
 
   onSubmit() {
@@ -41,6 +83,19 @@ export class FirstPageComponent implements OnInit {
     toMonth: new FormControl()
   });
 
+// tslint:disable-next-line: member-ordering
+  data = new FormGroup({
+    value1: new FormControl(),
+    value2: new FormControl(),
+    value3: new FormControl()
+  });
+
+  dataOutput( value: string ): void {
+    // const result = Object.assign({}, this.data.value);
+    // const final = this.data.value;
+    // console.log(final);
+    console.log(value);
+  }
 
 // tslint:disable-next-line: member-ordering
   from = {
@@ -60,6 +115,9 @@ export class FirstPageComponent implements OnInit {
       this.fromMonths = [];
       this.fromMonths = this.fromMonths.concat(this.months);
       this.fromMonths.splice(0, this.currentMonth);
+
+      // this.mainForm.patchValue({fromMonth: this.fromMonths.splice(0, this.currentMonth)});
+
     } else if (this.from.year > this.currentYear) {
       this.fromMonths = this.months;
     } else {
@@ -99,6 +157,9 @@ export class FirstPageComponent implements OnInit {
 
     const numberOfMonths = diff + 1;
     for (let i = 0; i < numberOfMonths; i++) {
+
+      this.subForm.push(this.createRandomData());
+
       this.records.push({
         date: `${tempMonth} ${tempYear}`,
         value1: '',
