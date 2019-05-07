@@ -1,0 +1,20 @@
+<router-outlet></router-outlet>
+
+<div>
+  <form [formGroup]='productsForm' (submit)='showData()'>
+    <div>
+      Catagory:
+      <input type="text" formControlName="catagory">
+    </div>
+    <div formArrayName="brands" >
+      hello
+      <div *ngFor="let brand of productsForm.controls; let i = index;">
+      <div formGroupName = "{{i}}">
+        {{brand.get('title').value}}
+        Hiiii
+      </div>
+    </div>
+  </div>
+    <input type="submit" value="submit">
+  </form>
+</div>
