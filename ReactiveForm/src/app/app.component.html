@@ -1,6 +1,6 @@
 <router-outlet></router-outlet>
 
-<div>
+<!-- <div>
   <form [formGroup]='productsForm' (submit)='showData()'>
     <div>
       Catagory:
@@ -17,4 +17,27 @@
   </div>
     <input type="submit" value="submit">
   </form>
-</div>
+</div> -->
+
+<form [formGroup]="myForm">
+    Value: {{ myForm.value | json }}
+    <hr>
+    <mat-form-field class="full">
+        <input matInput placeholder="email" formControlName="email">
+    </mat-form-field>
+    <div formArrayName="phones">
+        <div *ngFor="let phone of phoneForms.controls; let i=index" [formGroupName]="i">
+            <mat-form-field class="xs">
+                <input matInput placeholder="area" formControlName="area">
+            </mat-form-field>
+            <mat-form-field class="xs">
+                <input matInput placeholder="prefix" formControlName="prefix">
+            </mat-form-field>
+            <mat-form-field class="sm">
+                <input matInput placeholder="line" formControlName="line">
+            </mat-form-field>
+            <button mat-raised-button color="warn" (click)="deletePhone()">Delete</button>
+        </div>
+    </div>
+    <button mat-raised-button color="primary" (click)="addPhone()">Add Phone Number</button>
+</form>

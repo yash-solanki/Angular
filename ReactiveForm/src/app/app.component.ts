@@ -8,45 +8,70 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 })
 export class AppComponent implements OnInit {
 
-productsForm: FormGroup;
-products = [
-  {
-    'brand' : 'apple'
-  },
-  {
-    'brand' : 'xiomi'
-  },
-  {
-    'brand' : 'samsung'
-  }
-];
+// productsForm: FormGroup;
+// products = [
+//   {
+//     'brand' : 'apple'
+//   },
+//   {
+//     'brand' : 'xiomi'
+//   },
+//   {
+//     'brand' : 'samsung'
+//   }
+// ];
+
+myForm: FormGroup;
 
 constructor( private fb: FormBuilder ) {}
 
   ngOnInit() {
-    this.createForm(this.products);
-  }
+    // this.createForm(this.products);
 
-  public createForm(products) {
-    let arr = [];
-    for (let i = 0; i < arr.length; i++) {
-      arr.push(this.buildProduct(products[i]));
-    }
-    this.productsForm = this.fb.group({
-      catagory: [''],
-      brands: this.fb.array(arr)
+    this.myForm = this.fb.group({
+      email: '',
+      phones: this.fb.array([])
     });
   }
 
-  buildProduct(product): FormGroup {
-    return this.fb.group({
-      title: [product.brand],
-      value: ['']
-    });
+  get phoneForms() {
+    return this.myForm.get('phones') as FormArray
   }
 
-  showData() {
-    console.log(this.productsForm.value);
+  adPhone() {
+    const phone = this.fb.group({
+      area: [],
+      prefix: [],
+      line: []
+    });
+
+    this.phoneForms.push(phone);
   }
+
+  deletePhone(i) {
+    this.phoneForms.removeAt(i);
+  }
+
+  // public createForm(products) {
+  //   let arr = [];
+  //   for (let i = 0; i < arr.length; i++) {
+  //     arr.push(this.buildProduct(products[i]));
+  //   }
+  //   this.productsForm = this.fb.group({
+  //     catagory: [''],
+  //     brands: this.fb.array(arr)
+  //   });
+  // }
+
+  // buildProduct(product): FormGroup {
+  //   return this.fb.group({
+  //     title: [product.brand],
+  //     value: ['']
+  //   });
+  // }
+
+  // showData() {
+  //   console.log(this.productsForm.value);
+  // }
 
 }
