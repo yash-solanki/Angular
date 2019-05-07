@@ -1,4 +1,4 @@
-<!-- <div class="container mt-5" id="selectDate">
+<div class="container mt-5" id="selectDate">
     <form [formGroup]='form'>
       From :
       <select name="fromYear" id="fromYear" formControlName="fromYear" [(ngModel)]="from.year" (change)="getFromMonths(); getToYears()">
@@ -32,27 +32,26 @@
     <label>Value1 : <input type="text" [(ngModel)]="record.value1" formControlName="value1" id="{{'value1'+i}}" placeholder="Enter Value1"></label><br/>
     <label>Value2 : <input type="text" [(ngModel)]="record.value2" formControlName="value2" [id]="'value2'+i" placeholder="Enter Value2"></label><br/>
     <label>Value3 : <input type="text" [(ngModel)]="record.value3" formControlName="value3" [id]="'value3'+i" placeholder="Enter Value3"></label><br/>
-    <br/> -->
+    <br/>
     <!-- [(ngModel)]="record.value1"
     [(ngModel)]="record.value2"
     [(ngModel)]="record.value3" -->
 
-    <!-- <button (click)="dataOutput(record.value1.value)">Submit</button>
+    <!-- <button (click)="dataOutput(record.value1.value)">Submit</button> -->
 </div>
-</form> -->
+</form>
 
-<!-- New Code -->
-<!-- <div id="submitBtn">
+<div id="submitBtn">
 <button mat-raised-button color="primary" (click)="finalOutput()" >FinalSubmit</button>
-</div> -->
+</div>
 
-<div class="col-12">
-  <form [formGroup]="mainForm" (submit)="submit()">
+<!-- <div class="col-12">
+  <form [formGroup]="mainForm" (submit)="submit()"> -->
 
     <!-- Upper Form -->
 
 
-    {{mainForm.value | json}}
+    <!-- {{mainForm.value | json}}
     <div class="col-6">
       <label >From:</label>
       <select name="fromYear" formControlName="fromYear" [(ngModel)]="from.year" (change)="getFromMonths(); getToYears()">
@@ -77,15 +76,16 @@
         <button mat-raised-button color="primary" (click)="generateRecords()">Generate</button>
     </div>
     <div formArrayName="randomData">
-      <div class="col-6" *ngFor="let ranData of dataFormGroup.controls; let i = index;">
-        <div [formGroupName]="i">
-          <div class="col-6">
+        <div class="col-6">
             <label> Generated Fields: </label>
           </div>
+      <div class="col-6" *ngFor="let record of records; let i = index;">
+        <div [formGroupName]="i"> -->
 
-          <!-- <div *ngFor="let record of records"> -->
+          <!-- <div *ngFor="let record of records; let ranData of dataFormGroup.controls;"></div> -->
             <!-- {{record.date}} -->
-          <div class="col-6">
+
+            <!-- <div class="col-6">
             <label> Value1:</label>
             <input type="text" formControlName="value1">
             <span *ngIf="getRandomDataFromGroup(i).controls['value1'].touched && getRandomDataFromGroup(i).controls['value1'].hasError('required')">
@@ -105,9 +105,9 @@
                 <span *ngIf="getRandomDataFromGroup(i).controls['value1'].touched && getRandomDataFromGroup(i).controls['value1'].hasError('required')">
                   Value is required
                 </span>
-          </div>
-        <!-- </div> -->
-        </div>
+          </div> -->
+
+        <!-- </div>
       </div>
     </div>
 
@@ -117,4 +117,4 @@
 
   </form>
 
-</div>
+</div> -->

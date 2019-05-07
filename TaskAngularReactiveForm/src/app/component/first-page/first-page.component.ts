@@ -19,12 +19,12 @@ export class FirstPageComponent implements OnInit {
   toYears = [];
 
   // New Code
-  public mainForm: FormGroup;
-  public subForm: FormArray;
+  // public mainForm: FormGroup;
+  // public subForm: FormArray;
 
-  get dataFormGroup() {
-    return this.mainForm.get('randomData') as FormArray;
-  }
+  // get dataFormGroup() {
+  //   return this.mainForm.get('randomData') as FormArray;
+  // }
 
   constructor(private fb: FormBuilder) { }
 
@@ -37,38 +37,41 @@ export class FirstPageComponent implements OnInit {
 
     // new Code
 
-    this.mainForm = this.fb.group({
-      fromYear: [null, Validators.compose([Validators.required])],
-      fromMonth: [null, Validators.compose([Validators.required])],
-      toYear: [null, Validators.compose([Validators.required])],
-      toMonth: [null, Validators.compose([Validators.required])],
-      randomData: this.fb.array([this.createRandomData()])
-    });
+  //   this.mainForm = this.fb.group({
+  //     fromYear: [null, Validators.compose([Validators.required])],
+  //     fromMonth: [null, Validators.compose([Validators.required])],
+  //     toYear: [null, Validators.compose([Validators.required])],
+  //     toMonth: [null, Validators.compose([Validators.required])],
+  //     randomData: this.fb.array([this.createRandomData()])
+  //   });
 
-    this.subForm = this.mainForm.get('randomData') as FormArray;
+  //   this.subForm = this.mainForm.get('randomData') as FormArray;
   }
 
   // new Code
-  createRandomData(): FormGroup {
-    return this.fb.group({
-      value1: [''],
-      value2: [''],
-      value3: ['']
-    });
-  }
+  // createRandomData(): FormGroup {
+  //   let tempMonth = this.from.month;
+  //   let tempYear = parseInt(this.from.year);
+  //   return this.fb.group({
+  //     date: `${tempMonth} ${tempYear}`,
+  //     value1: [''],
+  //     value2: [''],
+  //     value3: ['']
+  //   });
+  // }
 
-  getRandomDataFromGroup(index): FormGroup {
-    // this.subForm = this.form.get('randomData') as FormArray;
-    const formGroup = this.subForm.controls[index] as FormGroup;
-    return formGroup;
-  }
+  // getRandomDataFromGroup(index): FormGroup {
+  //   // this.subForm = this.form.get('randomData') as FormArray;
+  //   const formGroup = this.subForm.controls[index] as FormGroup;
+  //   return formGroup;
+  // }
 
-  FOP = [];
+  // FOP = [];
 
-  submit() {
-    this.FOP = this.mainForm.value;
-    console.log(this.FOP);
-  }
+  // submit() {
+  //   this.FOP = this.mainForm.value;
+  //   console.log(this.FOP);
+  // }
 
   onSubmit() {
     console.log(this.form);
@@ -158,7 +161,7 @@ export class FirstPageComponent implements OnInit {
     const numberOfMonths = diff + 1;
     for (let i = 0; i < numberOfMonths; i++) {
 
-      this.subForm.push(this.createRandomData());
+     // this.subForm.push(this.createRandomData());
 
       this.records.push({
         date: `${tempMonth} ${tempYear}`,
