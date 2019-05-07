@@ -19,7 +19,7 @@
   </form>
 </div> -->
 
-<form [formGroup]="myForm">
+<form [formGroup]="myForm" class="myForm" (submit)="onSubmit()">
     Value: {{ myForm.value | json }}
     <hr>
     <mat-form-field class="full">
@@ -38,6 +38,7 @@
             </mat-form-field>
             <button mat-raised-button color="warn" (click)="deletePhone()">Delete</button>
         </div>
+        <button type="submit" mat-raised-button color="warn">Save Data</button>
     </div>
-    <button mat-raised-button color="primary" (click)="addPhone()">Add Phone Number</button>
+    <button mat-raised-button color="primary" (click)="this.addPhone()">Add Phone Number</button>
 </form>

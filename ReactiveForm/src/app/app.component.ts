@@ -38,7 +38,7 @@ constructor( private fb: FormBuilder ) {}
     return this.myForm.get('phones') as FormArray
   }
 
-  adPhone() {
+  addPhone() {
     const phone = this.fb.group({
       area: [],
       prefix: [],
@@ -50,6 +50,10 @@ constructor( private fb: FormBuilder ) {}
 
   deletePhone(i) {
     this.phoneForms.removeAt(i);
+  }
+
+  onSubmit() {
+    console.log(this.phoneForms.value);
   }
 
   // public createForm(products) {
